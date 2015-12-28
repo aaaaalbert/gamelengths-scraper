@@ -9,6 +9,7 @@
 import urllib.request, urllib.error, urllib.parse
 import lxml.html
 import csv
+import time
 
 
 # This is where we will output to
@@ -26,6 +27,8 @@ for platform in platforms:
     while True:
         print("scraping " + platform + " page " + str(page))
 
+        time.sleep(5)
+
         url = base_url + str(page)
         request = urllib.request.Request(url, headers={"User-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1"})
         form_data = {'detail': '0', 'plat': str(platform), 'queryString': '', 'sortd': 'Normal Order', 'sorthead': 'popular', 't': 'games'}
@@ -37,12 +40,10 @@ for platform in platforms:
 
 
         expected_end_marker = root.xpath("//li/text()")
-        print("bla: " + expected_end_marker[0])
         if "No results" in expected_end_marker[0]:
             print("final page for " + platform + " reached")
             break
 
-        # No, not done yet. Continue with products
         products = root.xpath("//li")
 
         print(len(products))
@@ -53,29 +54,65 @@ for platform in platforms:
             data['title'] = str(product.xpath("div[2]/h3/a/text()")[0])
 
 
+            ## special format: 1½ Hours - 15 Mins 
+            # interims solution: split at the '-' and work only with the second value (usually the higher, but not always)
+
+
             main_story_length = product.xpath("div[2]/div/div[1]/div[2]/text()")
             if len(main_story_length) == 0 or main_story_length[0] == '--':
                 data['main_story_length'] = ''
             else:
-                data['main_story_length'] = str(main_story_length[0])
+                tmp = str(main_story_length[0])
+                if '-' in tmp:
+                    tmp = tmp.split('-')[1]
+                tmp = tmp.replace(" Hours ", '')
+                tmp = tmp.replace("½", '.5')
+                if "Mins" in tmp:
+                    tmp = tmp.replace(" Mins ", '')
+                    tmp = str(float(tmp) / 60.0)
+                data['main_story_length'] = tmp.strip()
 
             mainextra_length = product.xpath("div[2]/div/div[2]/div[2]/text()")
             if len(mainextra_length) == 0 or mainextra_length[0] == '--':
                 data['mainextra_length'] = ''
             else:
-                data['mainextra_length'] = str(mainextra_length[0])
+                tmp = str(mainextra_length[0])
+                if '-' in tmp:
+                    tmp = tmp.split('-')[1]
+                tmp = tmp.replace(" Hours ", '')
+                tmp = tmp.replace("½", '.5')
+                if "Mins" in tmp:
+                    tmp = tmp.replace(" Mins ", '')
+                    tmp = str(float(tmp) / 60.0)
+                data['mainextra_length'] = tmp.strip()
 
             completionist_length = product.xpath("div[2]/div/div[3]/div[2]/text()")
             if len(completionist_length) == 0 or completionist_length[0] == '--':
                 data['completionist_length'] = ''
             else:
-                data['completionist_length'] = str(completionist_length[0])
+                tmp = str(completionist_length[0])
+                if '-' in tmp:
+                    tmp = tmp.split('-')[1]
+                tmp = tmp.replace(" Hours ", '')
+                tmp = tmp.replace("½", '.5')
+                if "Mins" in tmp:
+                    tmp = tmp.replace(" Mins ", '')
+                    tmp = str(float(tmp) / 60.0)
+                data['completionist_length'] = tmp.strip()
 
             combined_length = product.xpath("div[2]/div/div[4]/div[2]/text()")
             if len(combined_length) == 0 or combined_length[0] == '--':
                 data['combined_length'] = ''
             else:
-                data['combined_length'] = str(combined_length[0])
+                tmp = str(combined_length[0])
+                if '-' in tmp:
+                    tmp = tmp.split('-')[1]
+                tmp = tmp.replace(" Hours ", '')
+                tmp = tmp.replace("½", '.5')
+                if "Mins" in tmp:
+                    tmp = tmp.replace(" Mins ", '')
+                    tmp = str(float(tmp) / 60.0)
+                data['combined_length'] = tmp.strip()
 
             data['platform'] = platform
 
