@@ -23,6 +23,7 @@ hltb-maclinuxios | ios  | 1  | 7
 hltb-xboxone360orig | xboxone | 1 | end
 hltb-xboxone360orig | xbox360 | 1 | end
 hltb-xboxone360orig | xboxorig | 1 | 16
-hltb-xboxorig | xboxorig | 1 |
-hltb-ios | ios | 1 | 
+hltb-xboxorig | xboxorig | 1 | end
+hltb-ios | ios | 1 | end
+hltb-browser | browser | 1 | 
 
