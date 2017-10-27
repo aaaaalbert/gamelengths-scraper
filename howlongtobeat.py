@@ -52,7 +52,11 @@ for platform in platforms:
         for product in products:
             data = {}
 
-            data['title'] = str(product.xpath("div[2]/h3/a/text()")[0])
+            try:
+              data['title'] = str(product.xpath("div[2]/h3/a/text()")[0])
+            except IndexError:
+              print("Oops in", data, "continuing")
+              continue
 
 
             ## special format: 1½ Hours - 15 Mins 
