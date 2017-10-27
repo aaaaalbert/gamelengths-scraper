@@ -7,7 +7,7 @@ The last page, named "end" here, is 1538 by the way.
 
 filename | platf | from | to | merged? | into what?
 ---------+-------+------+----+---------+-----------
-hlbt-android | android | 1  | | UNFINISHED |
+hlbt-android | android | 1  | end | | TODO
 hltb-browser | browser | 1 | end | - | browser
 hltb-ios | ios | 1 | end | | TODO
 hltb-maclinuxios | mac | 1  | end | pcmaclinux
