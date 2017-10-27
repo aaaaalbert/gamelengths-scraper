@@ -8,8 +8,7 @@ The last page, named "end" here, is 1538 by the way.
 filename | platf | from | to | merged? | into what?
 ---------+-------+------+----+---------+-----------
 hlbt-android | android | 1  | | UNFINISHED |
-hltb-browser1 | browser | 1 | 942 | TODO |
-hltb-browser2 | browser | 942 | | UNFINISHED |
+hltb-browser | browser | 1 | end | - | browser
 hltb-ios | ios | 1 | end | | TODO
 hltb-maclinuxios | mac | 1  | end | pcmaclinux
 hltb-maclinuxios | linux | 1 | end | pcmaclinux
