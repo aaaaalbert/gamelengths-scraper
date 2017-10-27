@@ -10,10 +10,11 @@ import urllib.request, urllib.error, urllib.parse
 import lxml.html
 import csv
 import time
+import sys
 
 
 # This is where we will output to
-output_file = open('howlongtobeat.csv', 'w')
+output_file = open(sys.argv[1], 'w')
 csv_writer = csv.DictWriter(output_file, fieldnames=["title", "main_story_length", "mainextra_length", "completionist_length", "combined_length", "platform"], delimiter=';')
 csv_writer.writeheader()
 
