@@ -1,3 +1,9 @@
+# Raw Datasets Readme
+
+This file lists the filenames, platforms, from-pages, and to-pages
+for the raw datasets contained in this subdirectory. A "cooked",
+consolidated version of the dataset with no dups etc. will follow.
+
 filename | platf | from | to
 ---------+-------+------+-----
 hltb01   | ps    | 1    | 195
