@@ -19,8 +19,31 @@ csv_writer = csv.DictWriter(output_file, fieldnames=["title", "main_story_length
 csv_writer.writeheader()
 
 base_url = "http://howlongtobeat.com/search_main.php?page="
-platforms = ['3DO', 'Amiga', 'Amstrad CPC', 'Android', 'Apple II', 'Arcade', 'Atari 2600', 'Atari 5200', 'Atari 7800', 'Atari Jaguar', 'Atari Jaguar CD', 'Atari Lynx', 'Atari ST', 'Browser', 'Commodore 64', 'Dreamcast', 'Game & Watch', 'Game Boy', 'Game Boy Advance', 'Game Boy Color', 'iOS', 'Linux', 'Mac', 'MSX', 'N-Gage', 'Neo Geo', 'Neo Geo CD', 'Neo Geo Pocket', 'Neo Geo Pocket Color', 'NES', 'Nintendo 2DS', 'Nintendo 3DS', 'Nintendo 64', 'Nintendo DS', 'Nintendo GameCube', 'OnLive', 'Ouya', 'PC', 'Philips CD-i', 'PlayStation', 'PlayStation 2', 'PlayStation 3', 'PlayStation 4', 'PlayStation Now', 'PlayStation Vita', 'PSP', 'Sega 32X', 'Sega CD', 'Sega Game Gear', 'Sega Master System', 'Sega Mega Drive/Genesis', 'Sega Saturn', 'Sharp X68000', 'Super Nintendo', 'Tiger Handheld', 'Turbografx-16', 'Turbografx-CD', 'Virtual Boy', 'Wii', 'Wii U', 'Windows Phone', 'WonderSwan', 'Xbox', 'Xbox 360', 'Xbox One', 'ZX Spectrum']
-# platforms = ["3DO"]
+current_platforms = [
+    'PC', 'Mac', 'Linux', 'iOS',
+    'Xbox One', 'Xbox 360', 'Xbox',
+    'PlayStation 4', 'PlayStation 3', 'PlayStation 2', 'PlayStation',
+    'PlayStation Now', 'PlayStation Vita', 'PSP',
+    'Wii', 'Wii U', 'Nintendo 2DS', 'Nintendo 3DS', 'Nintendo GameCube',
+    'Nintendo 64', # XXX no Switch yet?
+    'Windows Phone', 'OnLive', 'Ouya',
+  ]
+
+classic_platforms = ['3DO', 'Amiga', 'Amstrad CPC', 'Android',
+    'Apple II', 'Arcade', 'Atari 2600', 'Atari 5200', 'Atari 7800',
+    'Atari Jaguar', 'Atari Jaguar CD', 'Atari Lynx', 'Atari ST',
+    'Browser', # XXX should probably move to current_platforms
+    'Commodore 64', 'Dreamcast', 'Game & Watch',
+    'Game Boy', 'Game Boy Advance', 'Game Boy Color', 'MSX',
+    'N-Gage', 'Neo Geo', 'Neo Geo CD', 'Neo Geo Pocket',
+    'Neo Geo Pocket Color', 'NES' 'Philips CD-i', 'Sega 32X',
+    'Sega CD', 'Sega Game Gear', 'Sega Master System',
+    'Sega Mega Drive/Genesis', 'Sega Saturn', 'Sharp X68000',
+    'Super Nintendo', 'Tiger Handheld', 'Turbografx-16',
+    'Turbografx-CD', 'Virtual Boy', 'WonderSwan', 'ZX Spectrum',
+  ]
+
+platforms = current_platforms
 
 
 for platform in platforms:
